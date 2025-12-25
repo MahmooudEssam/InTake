@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
 import 'features/auth/presentation/pages/signup_page.dart';
+import 'features/splash_screen/splash_screen.dart';
 import 'core/theme/theme.dart';
 
 void main() {
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'InTake App',
       theme: AppTheme.darkThemeMode,
-      home: const SignUpPage(),
+      home: const SplashScreen(),
     );
   }
 }
