@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/appPalette.dart';
+import '../../../../features/lang_model_connection/connect.dart';
 
 class AuthGradientButton extends StatelessWidget {
-  const AuthGradientButton({super.key});
-
+  AuthGradientButton({super.key});
+  final GeminiService _geminiService = GeminiService();
   @override
   Widget build(BuildContext context) {
   return Container(
@@ -21,7 +22,10 @@ class AuthGradientButton extends StatelessWidget {
     ),
 
     child: ElevatedButton(
-        onPressed: (){},
+        onPressed: () async{
+          final response = await GeminiService().getGeminiResponseStream("What is the meaning of Life?");
+          print(response);
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppPallete.transparentColor,
           shadowColor: AppPallete.transparentColor,

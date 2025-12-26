@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:intake/core/theme/appPalette.dart';
 import 'package:intake/features/auth/presentation/pages/signup_page.dart';
+import 'package:intake/features/lang_model_connection/chatBot_page.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -143,7 +145,7 @@ class _BottomPart extends StatelessWidget {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => const SignUpPage(),
+                      builder: (_) => SignUpPage(),
                     ),
                   );
                 },
