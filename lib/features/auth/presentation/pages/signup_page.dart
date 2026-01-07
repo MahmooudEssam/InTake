@@ -61,7 +61,7 @@ class signup_page_State extends State<SignUpPage> {
                   TextSpan(
                     text: "Sign In",
                     style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      color: AppPallete.gradient2,
+                      color: AppPallete.selectedColor,
                       fontWeight: FontWeight.bold
                     ),
                   )

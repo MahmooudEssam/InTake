@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../core/theme/appPalette.dart';
+
 class SecondaryCourseCard extends StatelessWidget {
   const SecondaryCourseCard({
     super.key,
     required this.title,
-    this.colorl = const Color(0xFF7553F6),
+    this.colorl = AppPallete.textColor_dark,
   });
 
   final String title;
@@ -16,7 +18,7 @@ class SecondaryCourseCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
       decoration: BoxDecoration(
-          color: colorl,
+          color: AppPallete.widgetColor,
           borderRadius: const BorderRadius.all(Radius.circular(20))),
       child: Row(
         children: [
@@ -27,7 +29,7 @@ class SecondaryCourseCard extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        color: Colors.white,
+                        color: AppPallete.textColor_dark,
                         fontWeight: FontWeight.w600,
                       ),
                 ),
@@ -35,7 +37,7 @@ class SecondaryCourseCard extends StatelessWidget {
                 const Text(
                   "Watch video - 15 mins",
                   style: TextStyle(
-                    color: Colors.white60,
+                    color: AppPallete.textColor_dark,
                     fontSize: 16,
                   ),
                 )
@@ -46,7 +48,7 @@ class SecondaryCourseCard extends StatelessWidget {
             height: 40,
             child: VerticalDivider(
               // thickness: 5,
-              color: Colors.white70,
+              color: AppPallete.textColor_dark,
             ),
           ),
           const SizedBox(width: 8),

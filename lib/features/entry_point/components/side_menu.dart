@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
+import '../../../core/theme/appPalette.dart';
 import '../../../model/menu.dart';
 
 class SideMenu extends StatelessWidget {
@@ -34,7 +35,7 @@ class SideMenu extends StatelessWidget {
               left: 0,
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Color(0xFF6792FF),
+                  color: AppPallete.selectedColor,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
               ),
@@ -52,7 +53,7 @@ class SideMenu extends StatelessWidget {
               ),
               title: Text(
                 menu.title,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: AppPallete.textColor_light),
               ),
             ),
           ],

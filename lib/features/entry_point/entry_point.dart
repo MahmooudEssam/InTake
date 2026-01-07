@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:intake/core/theme/appPalette.dart';
 import 'package:rive/rive.dart';
 import '../../../../features/entry_point/rive_constants.dart';
 import '../../../../features/home/presentation/pages/home_screen.dart';
@@ -67,7 +68,7 @@ class _EntryPointState extends State<EntryPoint>
     return Scaffold(
       extendBody: true,
       resizeToAvoidBottomInset: false,
-      backgroundColor: backgroundColor2,
+      backgroundColor: AppPallete.backgroundColor,
       body: Stack(
         children: [
           AnimatedPositioned(

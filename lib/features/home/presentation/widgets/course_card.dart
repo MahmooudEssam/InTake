@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../core/theme/appPalette.dart';
+
 class CourseCard extends StatelessWidget {
   const CourseCard({
     super.key,
@@ -18,7 +20,7 @@ class CourseCard extends StatelessWidget {
       height: 280,
       width: 260,
       decoration: BoxDecoration(
-        color: color,
+        color: AppPallete.widgetColor,
         borderRadius: const BorderRadius.all(Radius.circular(30)),
       ),
       child: Row(
@@ -32,21 +34,21 @@ class CourseCard extends StatelessWidget {
                   Text(
                     title,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        color: Colors.white, fontWeight: FontWeight.w600),
+                        color: AppPallete.textColor_dark, fontWeight: FontWeight.w600),
                   ),
                   const Padding(
                     padding: EdgeInsets.only(top: 12, bottom: 8),
                     child: Text(
                       "Build and animate an iOS app from scratch",
                       style: TextStyle(
-                        color: Colors.white38,
+                        color: AppPallete.textColor_dark,
                       ),
                     ),
                   ),
                   const Text(
                     "61 SECTIONS - 11 HOURS",
                     style: TextStyle(
-                      color: Colors.white38,
+                      color: AppPallete.textColor_dark,
                     ),
                   ),
                   const Spacer(),
@@ -58,9 +60,9 @@ class CourseCard extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 20,
                           backgroundColor: Colors.white,
-                          child: CircleAvatar(
-                            radius: 15,
-                          ),
+                         // child: CircleAvatar(
+                         //   radius: 15,
+                          //),
                         ),
                       ),
                     ),

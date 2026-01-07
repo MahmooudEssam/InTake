@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rive/rive.dart';
 
+import '../../../core/theme/appPalette.dart';
+
 class MenuBtn extends StatelessWidget {
   const MenuBtn({super.key, required this.press, required this.riveOnInit});
 
@@ -17,7 +19,7 @@ class MenuBtn extends StatelessWidget {
           height: 40,
           width: 40,
           decoration: const BoxDecoration(
-            color: Colors.white,
+            color: AppPallete.whiteColor,
             shape: BoxShape.circle,
             boxShadow: [
               BoxShadow(
