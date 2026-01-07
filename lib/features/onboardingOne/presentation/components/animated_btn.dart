@@ -16,12 +16,20 @@ class AnimatedBtn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
-        press;
-        Navigator.push(context,
+      onTap: () {
+        // 1. Trigger the animation (Important: use parentheses to execute it)
+        press();
+
+        // 2. Wait a split second so the user sees the animation play
+        Future.delayed(const Duration(milliseconds: 800), () {
+          // 3. Navigate to the next page
+          Navigator.push(
+            context,
             MaterialPageRoute(
-                builder: (context) => OnboardingPage2()
-            ));
+              builder: (context) => const OnboardingPage2(),
+            ),
+          );
+        });
       },
       child: SizedBox(
         height: 64,
@@ -31,20 +39,25 @@ class AnimatedBtn extends StatelessWidget {
             RiveAnimation.asset(
               "assets/RiveAssets/button.riv",
               controllers: [_btnAnimationController],
-
             ),
-            Positioned.fill(
+            const Positioned.fill(
               top: 8,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Icon(CupertinoIcons.arrow_right_circle,color: Colors.black,fontWeight: FontWeight.bold,),
-                  const SizedBox(width: 8),
+                  Icon(
+                    CupertinoIcons.arrow_right,
+                    color: Colors.black,
+                  ),
+                  SizedBox(width: 8),
                   Text(
                     "Get Started",
-                    style: TextStyle(color: Colors.black, fontWeight: FontWeight.w800,fontSize: 18),
-
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 18
+                    ),
                   )
                 ],
               ),

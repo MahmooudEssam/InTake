@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intake/core/theme/appPalette.dart';
+import 'package:intake/features/auth/presentation/pages/signup_page.dart';
 
+// =========================================================
+// 1. THE MISSING CLASS (Copy this back!)
+// This is the class your "AnimatedBtn" is trying to find.
+// =========================================================
 class OnboardingPage2 extends StatelessWidget {
   const OnboardingPage2({super.key});
 
@@ -11,28 +16,26 @@ class OnboardingPage2 extends StatelessWidget {
         pages: [
           OnboardingPageModel(
             title: 'Fast, Fluid and Secure',
-            description:
-            'Enjoy the best of the world in the palm of your hands.',
-            image:Image.asset('assets/logos/bicep.png'),
+            description: 'Enjoy the best of the world in the palm of your hands.',
+            image: Image.asset('assets/logos/bicep.png'),
             bgColor: AppPallete.borderColor,
           ),
           OnboardingPageModel(
             title: 'Connect with your friends.',
             description: 'Connect with your friends anytime anywhere.',
-            image:Image.asset('assets/logos/healthcare.png'),
+            image: Image.asset('assets/logos/healthcare.png'),
             bgColor: AppPallete.gradient3,
           ),
           OnboardingPageModel(
             title: 'Bookmark your favourites',
-            description:
-            'Bookmark your favourite quotes to read at a leisure time.',
-            image:Image.asset('assets/logos/salad.png'),
+            description: 'Bookmark your favourite quotes to read at a leisure time.',
+            image: Image.asset('assets/logos/salad.png'),
             bgColor: AppPallete.borderColor,
           ),
           OnboardingPageModel(
             title: 'Follow creators',
             description: 'Follow your favourite creators to stay in the loop.',
-            image:Image.asset('assets/logos/robot-assistant.png'),
+            image: Image.asset('assets/logos/robot-assistant.png'),
             bgColor: AppPallete.gradient3,
           ),
         ],
@@ -41,6 +44,9 @@ class OnboardingPage2 extends StatelessWidget {
   }
 }
 
+// =========================================================
+// 2. THE LOGIC (The Presenter)
+// =========================================================
 class OnboardingPagePresenter extends StatefulWidget {
   final List<OnboardingPageModel> pages;
   final VoidCallback? onSkip;
@@ -58,10 +64,15 @@ class OnboardingPagePresenter extends StatefulWidget {
 }
 
 class _OnboardingPageState extends State<OnboardingPagePresenter> {
-  // Store the currently visible page
   int _currentPage = 0;
-  // Define a controller for the pageview
   final PageController _pageController = PageController(initialPage: 0);
+
+  void _navigateToSignUp() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const SignUpPage()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,12 +84,10 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
           child: Column(
             children: [
               Expanded(
-                // Pageview to render each page
                 child: PageView.builder(
                   controller: _pageController,
                   itemCount: widget.pages.length,
                   onPageChanged: (idx) {
-                    // Change current page when pageview changes
                     setState(() {
                       _currentPage = idx;
                     });
@@ -110,9 +119,7 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
                                 ),
                               ),
                               Container(
-                                constraints: const BoxConstraints(
-                                  maxWidth: 280,
-                                ),
+                                constraints: const BoxConstraints(maxWidth: 280),
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 24.0,
                                   vertical: 8.0,
@@ -132,60 +139,40 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
                   },
                 ),
               ),
-
-              // Current page indicator
+              // Dots Indicator
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: widget.pages
-                    .map(
-                      (item) => AnimatedContainer(
+                children: widget.pages.map((item) {
+                  return AnimatedContainer(
                     duration: const Duration(milliseconds: 250),
-                    width: _currentPage == widget.pages.indexOf(item)
-                        ? 30
-                        : 8,
+                    width: _currentPage == widget.pages.indexOf(item) ? 30 : 8,
                     height: 8,
                     margin: const EdgeInsets.all(2.0),
                     decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                  ),
-                )
-                    .toList(),
+                  );
+                }).toList(),
               ),
-
-              // Bottom buttons
+              // Buttons
               SizedBox(
                 height: 100,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     TextButton(
-                      style: TextButton.styleFrom(
-                        visualDensity: VisualDensity.comfortable,
-                        foregroundColor: Colors.white,
-                        textStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                       onPressed: () {
                         widget.onSkip?.call();
+                        _navigateToSignUp();
                       },
-                      child: const Text("Skip"),
+                      child: const Text("Skip", style: TextStyle(color: Colors.white)),
                     ),
                     TextButton(
-                      style: TextButton.styleFrom(
-                        visualDensity: VisualDensity.comfortable,
-                        foregroundColor: Colors.white,
-                        textStyle: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
                       onPressed: () {
                         if (_currentPage == widget.pages.length - 1) {
                           widget.onFinish?.call();
+                          _navigateToSignUp();
                         } else {
                           _pageController.animateToPage(
                             _currentPage + 1,
@@ -197,16 +184,10 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
                       child: Row(
                         children: [
                           Text(
-                            _currentPage == widget.pages.length - 1
-                                ? "Finish"
-                                : "Next",
+                            _currentPage == widget.pages.length - 1 ? "Finish" : "Next",
+                            style: const TextStyle(color: Colors.white),
                           ),
-                          const SizedBox(width: 8),
-                          Icon(
-                            _currentPage == widget.pages.length - 1
-                                ? Icons.done
-                                : Icons.arrow_forward,
-                          ),
+                          const Icon(Icons.arrow_forward, color: Colors.white),
                         ],
                       ),
                     ),
@@ -221,6 +202,9 @@ class _OnboardingPageState extends State<OnboardingPagePresenter> {
   }
 }
 
+// =========================================================
+// 3. THE MODEL
+// =========================================================
 class OnboardingPageModel {
   final String title;
   final String description;
