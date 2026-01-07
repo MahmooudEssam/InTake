@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intake/features/entry_point/entry_point.dart';
 
 import '../../../../core/theme/appPalette.dart';
 import '../../../../features/lang_model_connection/connect.dart';
@@ -12,8 +13,8 @@ class AuthGradientButton extends StatelessWidget {
     decoration: BoxDecoration(
       gradient: const LinearGradient(
           colors: [
-            AppPallete.gradient1,
-            AppPallete.gradient2,
+            AppPallete.widgetColor,
+            AppPallete.widgetColor,
           ],
         begin: Alignment.topLeft,
         end: Alignment.topRight
@@ -22,9 +23,13 @@ class AuthGradientButton extends StatelessWidget {
     ),
 
     child: ElevatedButton(
-        onPressed: () async{
-          final response = await GeminiService().getGeminiResponseStream("What is the meaning of Life?");
-          print(response);
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => EntryPoint(),
+              )
+          );
         },
         style: ElevatedButton.styleFrom(
           backgroundColor: AppPallete.transparentColor,

@@ -4,6 +4,9 @@ import 'package:intake/core/theme/appPalette.dart';
 import 'package:intake/features/auth/presentation/pages/signup_page.dart';
 import 'package:intake/features/lang_model_connection/chatBot_page.dart';
 
+import '../entry_point/entry_point.dart';
+import '../home/presentation/pages/home_screen.dart';
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -142,10 +145,10 @@ class _BottomPart extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => SignUpPage(),
+                      builder: (context) => SignUpPage(),
                     ),
                   );
                 },
